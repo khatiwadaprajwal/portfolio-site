@@ -1,5 +1,6 @@
-import { FiMail, FiPhone, FiMapPin, FiGithub, FiSend } from 'react-icons/fi';
 import React, { useState } from 'react';
+import emailjs from 'emailjs-com';
+import { FiMail, FiPhone, FiMapPin, FiGithub, FiSend } from 'react-icons/fi';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,10 @@ const Contact = () => {
     subject: '',
     message: ''
   });
+
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     setFormData({
@@ -18,8 +23,28 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    setSending(true);
+    setSent(false);
+    setError('');
+
+    const serviceID = 'service_z6m0c9t';       // ✅ Replace with your actual service ID
+    const templateID = 'template_fsi6ib3';     // ✅ Replace with your actual template ID
+    const publicKey = 'KCm2zdKBTAyJzESus';     // ✅ Your EmailJS public key
+
+    emailjs.send(serviceID, templateID, formData, publicKey)
+      .then(() => {
+        setSent(true);
+        alert('✅ Message sent successfully!');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      })
+      .catch((err) => {
+        console.error('EmailJS Error:', err);
+        alert('❌ Failed to send message. Please try again.');
+        setError('Failed to send message.');
+      })
+      .finally(() => {
+        setSending(false);
+      });
   };
 
   const contactInfo = [
@@ -59,7 +84,7 @@ const Contact = () => {
   ];
 
   return (
-    <div className=" py-8">
+    <div className="py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-20">
@@ -75,32 +100,27 @@ const Contact = () => {
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h2 className="text-2xl font-bold  mb-5">
-                Let's Connect
-              </h2>
+              <h2 className="text-2xl font-bold mb-5">Let's Connect</h2>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
                 I'm Prajwal Khatiwada, a backend developer passionate about building scalable APIs and learning new technologies. 
                 I'm currently seeking internship opportunities to work on real-world projects and contribute to innovative teams.
               </p>
             </div>
 
-            {/* Current Status */}
             <div className="space-y-6">
               <div>
-                <h3 className=" text-2xl font-bold  mb-5">
-                  Current Status
-                </h3>
+                <h3 className="text-2xl font-bold mb-5">Current Status</h3>
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full" />
                     <span className="text-gray-600 dark:text-gray-400">Available for Internships</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-blue-500 rounded-full" />
                     <span className="text-gray-600 dark:text-gray-400">Learning React & Frontend</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-yellow-500 rounded-full" />
                     <span className="text-gray-600 dark:text-gray-400">Open to Collaborations</span>
                   </div>
                 </div>
@@ -108,9 +128,7 @@ const Contact = () => {
 
               {/* Contact Details */}
               <div>
-                <h3 className="text-2xl font-bold  mb-5">
-                  Contact Details
-                </h3>
+                <h3 className="text-2xl font-bold mb-5">Contact Details</h3>
                 <div className="space-y-4">
                   {contactInfo.map((info, index) => (
                     <div key={index} className="flex items-center space-x-3">
@@ -118,10 +136,7 @@ const Contact = () => {
                       <div>
                         <p className="text-sm text-gray-500 dark:text-gray-400">{info.label}</p>
                         {info.link ? (
-                          <a 
-                            href={info.link} 
-                            className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors"
-                          >
+                          <a href={info.link} className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors">
                             {info.value}
                           </a>
                         ) : (
@@ -135,9 +150,7 @@ const Contact = () => {
 
               {/* Social Links */}
               <div>
-                <h3 className="text-2xl font-bold  mb-5">
-                  Social Links
-                </h3>
+                <h3 className="text-2xl font-bold mb-5">Social Links</h3>
                 <div className="flex space-x-4">
                   {socialLinks.map((social, index) => (
                     <a
@@ -159,9 +172,7 @@ const Contact = () => {
           {/* Contact Form */}
           <div className="space-y-8">
             <div>
-              <h2 className="text-2xl font-bold  mb-5 ">
-                Send Message
-              </h2>
+              <h2 className="text-2xl font-bold mb-5">Send Message</h2>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                 Have a project in mind or want to discuss opportunities? Feel free to reach out!
               </p>
@@ -170,76 +181,36 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="form-label">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="form-input"
-                    placeholder="Your name"
-                  />
+                  <label htmlFor="name" className="form-label">Name</label>
+                  <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className="form-input" placeholder="Your name" />
                 </div>
                 <div>
-                  <label htmlFor="email" className="form-label">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="form-input"
-                    placeholder="your.email@example.com"
-                  />
+                  <label htmlFor="email" className="form-label">Email</label>
+                  <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="form-input" placeholder="Your email" />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="subject" className="form-label">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="form-input"
-                  placeholder="What's this about?"
-                />
+                <label htmlFor="subject" className="form-label">Subject</label>
+                <input type="text" id="subject" name="subject" value={formData.subject} onChange={handleChange} required className="form-input" placeholder="What's this about?" />
               </div>
 
               <div>
-                <label htmlFor="message" className="form-label">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={6}
-                  className="form-input resize-vertical"
-                  placeholder="Tell me about your project or opportunity..."
-                />
+                <label htmlFor="message" className="form-label">Message</label>
+                <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={6} className="form-input resize-vertical" placeholder="Tell me about your project or opportunity..." />
               </div>
 
               <button
                 type="submit"
+                disabled={sending}
                 className="w-full bg-green-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-green-700 transition-colors duration-300 flex items-center justify-center space-x-2"
               >
                 <FiSend className="w-5 h-5" />
-                <span>Send Message</span>
+                <span>{sending ? 'Sending...' : 'Send Message'}</span>
               </button>
+
+              {sent && <p className="text-green-600 mt-3">Message sent successfully!</p>}
+              {error && <p className="text-red-600 mt-3">{error}</p>}
             </form>
           </div>
         </div>
@@ -248,4 +219,4 @@ const Contact = () => {
   );
 };
 
-export default Contact; 
+export default Contact;
