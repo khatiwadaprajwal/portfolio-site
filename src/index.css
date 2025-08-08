@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -28,4 +29,53 @@ body, #root {
 
 .main-content {
   flex: 1;
+}
+
+/* Button styles with better dark mode support */
+.btn-primary {
+  @apply px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors duration-300 shadow-lg hover:shadow-xl;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 border-2 border-green-600 text-green-600 dark:text-green-400 font-semibold rounded-lg hover:bg-green-600 hover:text-white dark:hover:bg-green-600 dark:hover:text-white transition-colors duration-300 shadow-lg hover:shadow-xl;
+}
+
+/* Card styles for better dark mode support */
+.card {
+  @apply p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700;
+}
+
+/* Form field styles for better dark mode visibility */
+.form-input {
+  @apply w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors duration-200;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2;
+}
+
+/* Dark mode text visibility improvements */
+.dark-text {
+  @apply text-gray-900 dark:text-white;
+}
+
+.dark-text-secondary {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+.dark-text-muted {
+  @apply text-gray-600 dark:text-gray-400;
+}
+
+/* Ensure all headings are visible in dark mode */
+.heading-primary {
+  @apply text-2xl font-bold text-gray-900 dark:text-white;
+}
+
+.heading-secondary {
+  @apply text-xl font-semibold text-gray-900 dark:text-white;
+}
+
+.heading-tertiary {
+  @apply text-lg font-semibold text-gray-900 dark:text-white;
 }

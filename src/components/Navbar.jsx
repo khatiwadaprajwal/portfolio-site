@@ -1,9 +1,8 @@
-import { useState } from 'react';
+import React,{useState} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FiMenu, FiX, FiSun, FiMoon, FiCode } from 'react-icons/fi';
-import React from 'react';
 
-const Navbar = ({ darkMode, toggleDarkMode }) => {
+const Navbar = ({  pageName, theme = "light", toggleTheme, children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
@@ -14,11 +13,30 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     { path: '/skills', label: 'Skills' },
     { path: '/contact', label: 'Contact' },
   ];
+    const isDark = theme === "dark";
+
+  const navbarStyle = isDark
+    ? "bg-gray-900 text-white"
+    : "bg-white text-gray-900 border-b";
+
+  const bodyStyle = isDark
+    ? "bg-gray-800 text-white min-h-screen"
+    : "bg-gray-100 text-black min-h-screen";
+
+  // Get user's first initial
+  const getInitial = (name) => {
+    return name ? name.charAt(0).toUpperCase() : "?";
+  };
+
 
   const isActive = (path) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 shadow-sm">
+    <nav className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b shadow-sm ${
+      isDark 
+        ? 'bg-gray-900/90 border-gray-700' 
+        : 'bg-white/90 border-gray-200'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -27,7 +45,9 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               <FiCode className="w-6 h-6 text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors duration-300">
+              <span className={`text-xl font-bold group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors duration-300 ${
+                isDark ? 'text-white' : 'text-gray-900'
+              }`}>
                 Prajwal
               </span>
               <span className="text-xs text-green-600 dark:text-green-400 font-medium">
@@ -45,7 +65,9 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                   isActive(link.path)
                     ? 'text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 shadow-sm'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
+                    : isDark 
+                      ? 'text-gray-400 hover:text-white hover:bg-gray-800'
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                 }`}
               >
                 {link.label}
@@ -56,18 +78,25 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
           {/* Right side buttons */}
           <div className="flex items-center space-x-3">
             {/* Dark mode toggle */}
-            <button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
-              aria-label="Toggle dark mode"
-            >
-              {darkMode ? <FiSun className="w-5 h-5" /> : <FiMoon className="w-5 h-5" />}
-            </button>
+           <button
+            onClick={toggleTheme}
+            className={`ml-2 px-3 py-1 rounded text-sm transition-colors duration-200 ${
+              isDark 
+                ? 'bg-gray-700 hover:bg-gray-600 text-white' 
+                : 'bg-gray-200 hover:bg-gray-300 text-gray-900'
+            }`}
+          >
+            {isDark ? "☀ Light" : "🌙 Dark"}
+          </button>
 
             {/* Mobile menu button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
+              className={`md:hidden p-2 rounded-lg transition-all duration-200 ${
+                isDark 
+                  ? 'text-gray-400 hover:text-white hover:bg-gray-800' 
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+              }`}
               aria-label="Toggle mobile menu"
             >
               {isOpen ? <FiX className="w-5 h-5" /> : <FiMenu className="w-5 h-5" />}
@@ -78,7 +107,11 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-4 space-y-1 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 shadow-lg">
+            <div className={`px-2 pt-2 pb-4 space-y-1 border-t shadow-lg ${
+              isDark 
+                ? 'bg-gray-900 border-gray-700' 
+                : 'bg-white border-gray-200'
+            }`}>
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
@@ -87,7 +120,9 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                   className={`block px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 ${
                     isActive(link.path)
                       ? 'text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 shadow-sm'
-                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
+                      : isDark 
+                        ? 'text-gray-400 hover:text-white hover:bg-gray-800'
+                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                   }`}
                 >
                   {link.label}
@@ -101,4 +136,4 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   );
 };
 
-export default Navbar; 
+export default Navbar;

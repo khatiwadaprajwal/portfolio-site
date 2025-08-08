@@ -3,7 +3,7 @@ import React from 'react';
 
 const About = () => {
   return (
-    <div className="min-h-screen py-20">
+    <div className=" py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-20">
@@ -20,7 +20,7 @@ const About = () => {
           {/* Personal Info */}
           <div className="space-y-8">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              <h2 className="text-2xl font-bold  mb-6">
                 Who I Am
               </h2>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
@@ -36,14 +36,14 @@ const About = () => {
             </div>
 
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              <h2 className="text-2xl  mb-6">
                 What I Do
               </h2>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <FiCode className="w-6 h-6 text-green-600 dark:text-green-400 mt-1" />
                   <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Backend Development</h3>
+                    <h3 className="font-semibold  mb-2">Backend Development</h3>
                     <p className="text-gray-600 dark:text-gray-400 text-sm">
                       Building scalable APIs with Node.js, Express, and MongoDB
                     </p>
@@ -52,7 +52,7 @@ const About = () => {
                 <div className="flex items-start space-x-4">
                   <FiDatabase className="w-6 h-6 text-green-600 dark:text-green-400 mt-1" />
                   <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Database Design</h3>
+                    <h3 className="font-semibold  mb-2">Database Design</h3>
                     <p className="text-gray-600 dark:text-gray-400 text-sm">
                       Creating efficient MongoDB schemas and MySQL databases
                     </p>
@@ -61,7 +61,7 @@ const About = () => {
                 <div className="flex items-start space-x-4">
                   <FiGlobe className="w-6 h-6 text-green-600 dark:text-green-400 mt-1" />
                   <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Learning Frontend</h3>
+                    <h3 className="font-semibold  mb-2">Learning Frontend</h3>
                     <p className="text-gray-600 dark:text-gray-400 text-sm">
                       Currently learning React to become a full-stack developer
                     </p>
@@ -73,13 +73,13 @@ const About = () => {
 
           {/* Skills Overview */}
           <div className="space-y-8">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <h2 className="text-2xl font-bold  mb-6">
               Key Skills
             </h2>
             
             <div className="space-y-6">
               <div>
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-3">Languages & Frameworks</h3>
+                <h3 className="font-semibold  mb-3">Languages & Frameworks</h3>
                 <div className="flex flex-wrap gap-2">
                   <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-sm rounded-full">JavaScript</span>
                   <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-sm rounded-full">TypeScript</span>
@@ -90,7 +90,7 @@ const About = () => {
               </div>
 
               <div>
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-3">Databases</h3>
+                <h3 className="font-semibold  mb-3">Databases</h3>
                 <div className="flex flex-wrap gap-2">
                   <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-sm rounded-full">MongoDB</span>
                   <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-sm rounded-full">MySQL</span>
@@ -98,10 +98,10 @@ const About = () => {
               </div>
 
               <div>
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-3">Tools & Services</h3>
+                <h3 className="font-semibold  mb-3">Tools & Services</h3>
                 <div className="flex flex-wrap gap-2">
                   <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-sm rounded-full">Git & GitHub</span>
-                  <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-sm rounded-full">JWT Auth</span>
+                  <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-sm rounded-full">Postman</span>
                   <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-sm rounded-full">Nodemailer</span>
                   <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-sm rounded-full">Khalti</span>
                   <span className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 text-sm rounded-full">PayPal</span>
@@ -111,42 +111,46 @@ const About = () => {
           </div>
         </div>
 
-        {/* Education */}
-        <div className="mb-20">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-            Education
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="card">
+        {/* Education & Experience */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Education */}
+          <div className="space-y-8">
+            <h2 className="text-2xl ">
+              Education
+            </h2>
+            <div className="space-y-6">
               <div className="flex items-start space-x-4">
-                <FiBook className="w-8 h-8 text-green-600 dark:text-green-400 mt-1" />
+                <FiBook className="w-6 h-6 text-green-600 dark:text-green-400 mt-1" />
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                    Shankerdev Campus
-                  </h3>
-                  <p className="text-green-600 dark:text-green-400 font-medium mb-2">
-                    Bachelor of Information Management (BIM)
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    Kathmandu • Ongoing
-                  </p>
+                  <h3 className="font-semibold  dark:text-white">Bachelor in Information Management (BIM)</h3>
+                  <p className="text-green-600 dark:text-green-400 text-sm">Shankerdev Campus</p>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">2022 - Present</p>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="card">
+          {/* Experience */}
+          <div className="space-y-8">
+            <h2 className="text-2xl font-bold  dark:text-white">
+              Experience
+            </h2>
+            <div className="space-y-6">
               <div className="flex items-start space-x-4">
-                <FiBook className="w-8 h-8 text-green-600 dark:text-green-400 mt-1" />
+                <FiUsers className="w-6 h-6 text-green-600 dark:text-green-400 mt-1" />
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                    Aastha College
-                  </h3>
-                  <p className="text-green-600 dark:text-green-400 font-medium mb-2">
-                    Commerce
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    Jhapa • Year: 2078
-                  </p>
+                  <h3 className="font-semibold  dark:text-white">Backend Development</h3>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">2+ years of learning and building projects</p>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">RESTful APIs, Authentication, Database Design</p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <FiCode className="w-6 h-6 text-green-600 dark:text-green-400 mt-1" />
+                <div>
+                  <h3 className="font-semibold  dark:text-white">Open Source</h3>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">Contributing to projects and building solutions</p>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">GitHub: @khatiwadaprajwal</p>
                 </div>
               </div>
             </div>
@@ -154,8 +158,8 @@ const About = () => {
         </div>
 
         {/* Hobbies & Interests */}
-        <div>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+        <div className='space-y-8 mt-20'>
+          <h2 className="text-2xl font-bold  mb-8 text-center">
             Hobbies & Interests
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

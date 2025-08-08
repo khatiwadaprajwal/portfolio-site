@@ -9,32 +9,39 @@ import Skills from './pages/Skills';
 import Contact from './pages/Contact';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(() => {
-    const saved = localStorage.getItem('darkMode');
-    return saved ? JSON.parse(saved) : false;
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme || 'light';
   });
 
-  useEffect(() => {
-    localStorage.setItem('darkMode', JSON.stringify(darkMode));
-    document.documentElement.classList.toggle('dark', darkMode);
-  }, [darkMode]);
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
 
-  const toggleDarkMode = () => setDarkMode(prev => !prev);
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  // Dynamic class variables
+  const bgColor = theme === 'light' ? 'bg-white' : 'bg-gray-900';
+  const textColor = theme === 'light' ? 'text-black' : 'text-white';
 
   return (
     <Router>
-      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-        <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-        <main className="pt-16">
+      <div className={`min-h-screen transition-colors duration-300 ${bgColor} ${textColor} flex flex-col`}>
+        <Navbar theme={theme} toggleTheme={toggleTheme} />
+
+        <main className="pt-16 flex-grow">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/skills" element={<Skills />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/" element={<Home theme={theme} />} />
+            <Route path="/about" element={<About theme={theme} />} />
+            <Route path="/projects" element={<Projects theme={theme} />} />
+            <Route path="/skills" element={<Skills theme={theme} />} />
+            <Route path="/contact" element={<Contact theme={theme} />} />
           </Routes>
         </main>
-        <Footer />
+
+        <Footer theme={theme} />
       </div>
     </Router>
   );

@@ -3,11 +3,11 @@ import React from 'react';
 
 const Home = () => {
   return (
-    <div className="min-h-screen py-20">
+    <div className=" py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <div className="text-center mb-20">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Hi, I'm <span className="text-green-600 dark:text-green-400">Prajwal Khatiwada</span>
           </h1>
           <h2 className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300 mb-8">
@@ -20,7 +20,7 @@ const Home = () => {
           </p>
           
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 text-gray-600 dark:text-gray-400">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
             <a
               href="/contact"
               className="btn-primary inline-flex items-center justify-center"
@@ -56,21 +56,27 @@ const Home = () => {
 
         {/* Contact Info */}
         <div className="text-center">
-          <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8">
+          <h3 className="text-2xl font-semibold dark:text-white mb-8">
             Let's Connect
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
-            <div className="flex items-center justify-center space-x-3 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-              <FiMail className="w-5 h-5 text-green-600 dark:text-green-400" />
-              <span className="text-gray-700 dark:text-gray-300">prajwalkhatiwada28@gmail.com</span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            <div className="flex flex-col items-center space-y-2 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <FiMail className="w-6 h-6 text-green-600 dark:text-green-400" />
+              <span className="text-sm text-gray-700 dark:text-gray-300 text-center break-words">
+                prajwalkhatiwada28@gmail.com
+              </span>
             </div>
-            <div className="flex items-center justify-center space-x-3 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-              <FiPhone className="w-5 h-5 text-green-600 dark:text-green-400" />
-              <span className="text-gray-700 dark:text-gray-300">+977 9824005179</span>
+            <div className="flex flex-col items-center space-y-2 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <FiPhone className="w-6 h-6 text-green-600 dark:text-green-400" />
+              <span className="text-sm text-gray-700 dark:text-gray-300 text-center">
+                +977 9824005179
+              </span>
             </div>
-            <div className="flex items-center justify-center space-x-3 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-              <FiMapPin className="w-5 h-5 text-green-600 dark:text-green-400" />
-              <span className="text-gray-700 dark:text-gray-300">Lalitpur, Nepal</span>
+            <div className="flex flex-col items-center space-y-2 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg sm:col-span-2 lg:col-span-1">
+              <FiMapPin className="w-6 h-6 text-green-600 dark:text-green-400" />
+              <span className="text-sm text-gray-700 dark:text-gray-300 text-center">
+                Lalitpur, Nepal
+              </span>
             </div>
           </div>
         </div>

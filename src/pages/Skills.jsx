@@ -79,7 +79,7 @@ const Skills = () => {
   };
 
   return (
-    <div className="min-h-screen py-20">
+    <div className=" py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-20">
@@ -97,24 +97,25 @@ const Skills = () => {
             <div key={category.id} className="space-y-8">
               <div className="flex items-center space-x-3 mb-8">
                 <category.icon className="w-6 h-6 text-green-600 dark:text-green-400" />
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                <h2 className="text-2xl font-bold  dark:text-white">
                   {category.title}
                 </h2>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {category.skills.map((skill, index) => (
-                  <div key={index} className="card group">
-                    <div className="flex items-center space-x-4">
-                      <div className="text-2xl">{skill.icon}</div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
-                          {skill.name}
-                        </h3>
-                        <span className={`inline-block px-3 py-1 text-xs font-medium rounded-full ${getCategoryColor(skill.category)}`}>
-                          {skill.category}
-                        </span>
-                      </div>
+                  <div 
+                    key={index} 
+                    className="flex items-center space-x-3 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                  >
+                    <span className="text-2xl">{skill.icon}</span>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-gray-900 dark:text-white">
+                        {skill.name}
+                      </h3>
+                      <span className={`inline-block px-2 py-1 text-xs rounded-full ${getCategoryColor(skill.category)}`}>
+                        {skill.category}
+                      </span>
                     </div>
                   </div>
                 ))}
@@ -123,39 +124,27 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* Skill Categories Legend */}
-        <div className="mt-20">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-            Skill Categories Legend
+        {/* Skills Summary */}
+        <div className="mt-20 text-center">
+          <h2 className="text-2xl font-bold  mb-8">
+            Skills Overview
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            <div className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
-              <div className="w-4 h-4 bg-green-500 rounded-full mx-auto mb-3"></div>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Core</h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
-                Proficient and frequently used
-              </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">6</div>
+              <div className="text-gray-600 dark:text-gray-400">Languages</div>
             </div>
-            <div className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
-              <div className="w-4 h-4 bg-blue-500 rounded-full mx-auto mb-3"></div>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Learning</h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
-                Currently learning and improving
-              </p>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">5</div>
+              <div className="text-gray-600 dark:text-gray-400">Backend Tools</div>
             </div>
-            <div className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
-              <div className="w-4 h-4 bg-yellow-500 rounded-full mx-auto mb-3"></div>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Familiar</h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
-                Basic understanding and experience
-              </p>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">3</div>
+              <div className="text-gray-600 dark:text-gray-400">Databases</div>
             </div>
-            <div className="text-center p-6 bg-gray-50 dark:bg-gray-800 rounded-xl">
-              <div className="w-4 h-4 bg-gray-500 rounded-full mx-auto mb-3"></div>
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-2">Basic</h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
-                Fundamental knowledge
-              </p>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">5</div>
+              <div className="text-gray-600 dark:text-gray-400">Tools & Services</div>
             </div>
           </div>
         </div>
