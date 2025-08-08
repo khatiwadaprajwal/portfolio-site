@@ -23,7 +23,7 @@ const Projects = () => {
         'Modern React portfolio website built with Vite, Tailwind CSS, and responsive design showcasing my projects and skills.',
       technologies: ['React', 'Vite', 'Tailwind CSS', 'React Router', 'React Icons'],
       category: 'frontend',
-      githubUrl: 'https://github.com/khatiwadaprajwal/portfolio',
+      githubUrl: 'https://github.com/khatiwadaprajwal/portfolio-site',
       liveUrl: null,
       icon: '💼',
     },
