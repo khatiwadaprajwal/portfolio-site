@@ -33,7 +33,7 @@ function App() {
 
         <main className="pt-16 flex-grow">
           <Routes>
-            <Route path="/" element={<Home theme={theme} />} />
+            <Route path="/portfolio-site" element={<Home theme={theme} />} />
             <Route path="/about" element={<About theme={theme} />} />
             <Route path="/projects" element={<Projects theme={theme} />} />
             <Route path="/skills" element={<Skills theme={theme} />} />
