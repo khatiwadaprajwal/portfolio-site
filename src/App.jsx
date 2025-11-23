@@ -38,6 +38,7 @@ function App() {
             <Route path="/projects" element={<Projects theme={theme} />} />
             <Route path="/skills" element={<Skills theme={theme} />} />
             <Route path="/contact" element={<Contact theme={theme} />} />
+            <Route path="/" element={<Home theme={theme} />} />
           </Routes>
         </main>
 
