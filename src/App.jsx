@@ -35,10 +35,14 @@ function App() {
           <Routes>
             <Route path="/portfolio-site" element={<Home theme={theme} />} />
             <Route path="/about" element={<About theme={theme} />} />
+  
             <Route path="/projects" element={<Projects theme={theme} />} />
+            <Route path="/portfolio-site/projects" element={<Projects theme={theme} />} />
             <Route path="/skills" element={<Skills theme={theme} />} />
             <Route path="/contact" element={<Contact theme={theme} />} />
+            <Route path="/portfolio-site/contact" element={<Contact theme={theme} />} />
             <Route path="/" element={<Home theme={theme} />} />
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </main>
 
