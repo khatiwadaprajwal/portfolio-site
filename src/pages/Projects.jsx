@@ -1,7 +1,9 @@
 import { FiGithub, FiExternalLink } from 'react-icons/fi';
 import React, { useState } from 'react';
 
-const Projects = () => {
+const Projects =  ({ theme = "light" }) => {
+  const isDark = theme === "dark";
+
   const [activeFilter, setActiveFilter] = useState('all');
 
   const projects = [
@@ -9,7 +11,7 @@ const Projects = () => {
       id: 1,
       title: 'E-Commerce Backend System Project',
       description:
-        'Summer project of  E-Commerce Backend System - Developed secure, scalable API for authentication, product listings, order placement, and cart management with JWT authentication, payment integrations, and MongoDB schemas.',
+        'Summer project of E-Commerce Backend System - Developed secure, scalable API for authentication, product listings, order placement, and cart management with JWT authentication, payment integrations, and MongoDB schemas.',
       technologies: ['Node.js', 'Express.js', 'MongoDB', 'JWT', 'Khalti', 'PayPal', 'Nodemailer'],
       category: 'backend',
       githubUrl: 'https://github.com/khatiwadaprajwal/Project',
@@ -63,14 +65,17 @@ const Projects = () => {
       : projects.filter((project) => project.category === activeFilter);
 
   return (
-    <div className=" py-8">
+    <div className="py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Header */}
         <div className="text-center mb-20">
           <h1 className="text-3xl md:text-4xl font-bold text-green-600 dark:text-green-400 mb-4">
             My Projects
           </h1>
-          <p className="text-lg ">
+          <p className={`leading-relaxed mb-4 ${
+                isDark ? 'text-gray-300' : 'text-gray-600'
+              }`}>
             A collection of my work, from backend APIs to learning frontend development.
           </p>
         </div>
@@ -97,18 +102,22 @@ const Projects = () => {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {filteredProjects.map((project) => (
-            <div key={project.id} className="card group p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow hover:shadow-lg transition-shadow">
+            <div
+              key={project.id}
+              className="card p-6 rounded-lg border border-gray-200 dark:border-gray-700 shadow hover:shadow-lg transition-shadow group"
+            >
               <div className="flex flex-col space-y-4">
+
                 {/* Icon + Title */}
                 <div className="flex items-center space-x-3">
                   <div className="text-2xl">{project.icon}</div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-green-600 transition-colors">
                     {project.title}
                   </h3>
                 </div>
 
-                {/* Description */}
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                {/* Updated Description */}
+                <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                   {project.description}
                 </p>
 
@@ -135,6 +144,7 @@ const Projects = () => {
                     <FiGithub className="w-5 h-5" />
                     <span className="text-sm">View Code</span>
                   </a>
+
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}
@@ -147,23 +157,12 @@ const Projects = () => {
                     </a>
                   )}
                 </div>
+
               </div>
             </div>
           ))}
         </div>
 
-        {/* Empty State */}
-        {filteredProjects.length === 0 && (
-          <div className="text-center py-12">
-            <div className="text-6xl mb-4">🔍</div>
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-              No projects found
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              Try selecting a different filter or check back later for new projects.
-            </p>
-          </div>
-        )}
       </div>
     </div>
   );
