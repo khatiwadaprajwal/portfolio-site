@@ -1,47 +1,52 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route ,Navigate} from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import About from './pages/About';
-import Projects from './pages/Projects';
-import Skills from './pages/Skills';
-import Contact from './pages/Contact';
+import React, { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Projects from "./pages/Projects";
+import Skills from "./pages/Skills";
+import Contact from "./pages/Contact";
 
 function App() {
   const [theme, setTheme] = useState(() => {
-    const savedTheme = localStorage.getItem('theme');
-    return savedTheme || 'light';
+    const savedTheme = localStorage.getItem("theme");
+    return savedTheme || "light";
   });
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
   useEffect(() => {
-    localStorage.setItem('theme', theme);
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   // Dynamic class variables
-  const bgColor = theme === 'light' ? 'bg-white' : 'bg-gray-900';
-  const textColor = theme === 'light' ? 'text-black' : 'text-white';
+  const bgColor = theme === "light" ? "bg-white" : "bg-gray-900";
+  const textColor = theme === "light" ? "text-black" : "text-white";
 
   return (
     <Router>
-      <div className={`min-h-screen transition-colors duration-300 ${bgColor} ${textColor} flex flex-col`}>
+      <div
+        className={`min-h-screen transition-colors duration-300 ${bgColor} ${textColor} flex flex-col`}
+      >
         <Navbar theme={theme} toggleTheme={toggleTheme} />
 
         <main className="pt-16 flex-grow">
           <Routes>
-            <Route path="/portfolio-site" element={<Home theme={theme} />} />
+            <Route path="/" element={<Home theme={theme} />} />
             <Route path="/about" element={<About theme={theme} />} />
-  
             <Route path="/projects" element={<Projects theme={theme} />} />
-            <Route path="/portfolio-site/projects" element={<Projects theme={theme} />} />
             <Route path="/skills" element={<Skills theme={theme} />} />
             <Route path="/contact" element={<Contact theme={theme} />} />
-            <Route path="/portfolio-site/contact" element={<Contact theme={theme} />} />
-            <Route path="/" element={<Home theme={theme} />} />
+
+            {/* Redirect any unknown route */}
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </main>
