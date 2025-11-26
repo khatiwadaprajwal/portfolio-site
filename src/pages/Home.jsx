@@ -1,9 +1,10 @@
 import { FiGithub, FiMail, FiPhone, FiMapPin, FiDownload, FiArrowRight } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 import React from 'react';
 
 const Home = () => {
   return (
-    <div className=" py-8">
+    <div className="py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <div className="text-center mb-20">
@@ -21,20 +22,20 @@ const Home = () => {
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <a
-              href="/contact"
+            <Link
+              to="contact" // relative path
               className="btn-primary inline-flex items-center justify-center"
             >
               Get In Touch
               <FiArrowRight className="ml-2 w-4 h-4" />
-            </a>
-            <a
-              href="/projects"
+            </Link>
+            <Link
+              to="projects" // relative path
               className="btn-secondary inline-flex items-center justify-center"
             >
               View My Work
               <FiArrowRight className="ml-2 w-4 h-4" />
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -85,4 +86,4 @@ const Home = () => {
   );
 };
 
-export default Home; 
+export default Home;
